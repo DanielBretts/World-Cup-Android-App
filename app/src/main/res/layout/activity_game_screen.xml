@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameScreenActivity"
+    android:background="@drawable/grass">
+
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/game_FAB_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/main_blue"
+        app:icon="@drawable/ic_baseline_arrow_left_24"
+        app:iconSize="100dp" />
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/game_FAB_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:iconSize="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        app:icon="@drawable/ic_baseline_arrow_right_24"
+        android:backgroundTint="@color/main_blue"
+        />
+
+<LinearLayout
+    android:id="@+id/game_LL_TopLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/game_LL_heartLayout"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/main_IMG_heart1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ball"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/main_IMG_heart2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ball"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/main_IMG_heart3"
+            android:layout_marginStart="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ball"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="70dp"
+        android:layout_height="match_parent"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/game_LBL_time"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:text="00:00:00"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"/>
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/game_LL_obstaclesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/game_LL_TopLayout">
+        <LinearLayout
+            android:id="@+id/main_LL_firstLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/main_LL_secondLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/main_LL_thirdLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/game_LL_characterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/game_LL_obstaclesLayout"
+        android:gravity="center_horizontal"
+        android:translationZ="-2dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:layout_margin="20dp"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/main_character" />
+        <View
+            android:layout_width="17dp"
+            android:layout_height="match_parent"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:layout_margin="20dp"
+            app:srcCompat="@drawable/main_character"
+            android:visibility="visible"/>
+        <View
+            android:layout_width="17dp"
+            android:layout_height="match_parent"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:layout_margin="20dp"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/main_character" />/>
+    </LinearLayout>
+
+
+</RelativeLayout>
