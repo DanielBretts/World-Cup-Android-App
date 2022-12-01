@@ -1,8 +1,8 @@
 # World Cup 2022 Obstacle Game Android App - Android App ![Build status](https://github.com/wallabag/android-app/workflows/CI/badge.svg?branch=master)
 
-<![main_character](https://user-images.githubusercontent.com/60986160/205102375-4051208b-500f-44e9-a966-dc29205d0ae7.png)
-align="left"
-width="200" hspace="10" vspace="10">
+![main_character](https://user-images.githubusercontent.com/60986160/205102375-4051208b-500f-44e9-a966-dc29205d0ae7.png)
+{align="left"
+width="200" hspace="10" vspace="10"}
 
 
 <img src="/readme/wallabag logo.png" align="left"
