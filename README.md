@@ -28,27 +28,15 @@ The android app lets you:
 - Needs no special permissions on Android 6.0+.
 
 ## Screenshots
-
+### Characters
 #### Main Character
-[<img src="/readme/Wallabag%20Reading%20List.png" align="left"
-width="200"
-    hspace="10" vspace="10">](/readme/Wallabag%20Reading%20List.png)
-[<img src="/readme/Wallabag%20Article%20View.png" align="center"
-width="200"
-    hspace="10" vspace="10">](/readme/Wallabag%20Article%20View.png)
-    ### Characters
-    # Main Character
     ![main_character](https://user-images.githubusercontent.com/60986160/205102375-4051208b-500f-44e9-a966-dc29205d0ae7.png)
     
-    # Obstacles
+#### Obstacles
     ![obstacle](https://user-images.githubusercontent.com/60986160/205103613-85d7622b-f2d0-4900-8a1d-524187c8e2be.png)
 
 ## Permissions
 
-On Android versions prior to Android 6.0, wallabag requires the following permissions:
-- Full Network Access.
-- View Network Connections.
-- Run at startup.
-- Read and write access to external storage.
+This app requires the following permissions:
+- Vibrate
 
-The "Run at startup" permission is only used if Auto-Sync feature is enabled and is not utilised otherwise. The network access permissions are made use of for downloading content. The external storage permission is used to cache article images for viewing offline.
