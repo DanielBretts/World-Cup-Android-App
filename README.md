@@ -29,6 +29,7 @@ The android app lets you:
 
 ## Screenshots
 
+#### Main Character
 [<img src="/readme/Wallabag%20Reading%20List.png" align="left"
 width="200"
     hspace="10" vspace="10">](/readme/Wallabag%20Reading%20List.png)
