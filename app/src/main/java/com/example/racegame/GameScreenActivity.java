@@ -25,22 +25,22 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class GameScreenActivity extends AppCompatActivity {
-    private Vibrator v;
-    private Toast t;
     private ExtendedFloatingActionButton game_FAB_left;
     private ExtendedFloatingActionButton game_FAB_right;
     private MaterialTextView game_LBL_time;
     private LinearLayout game_LL_heartLayout;
-    private ArrayList<ShapeableImageView> game_life_images = new ArrayList<ShapeableImageView>();
+    private ArrayList<ShapeableImageView> game_life_images;
     private LinearLayout game_LL_characterLayout;
-    private ArrayList<ShapeableImageView> game_character_positions = new ArrayList<ShapeableImageView>();
-    private LinearLayout game_LL_obstaclesLayout;
-    private ArrayList<LinearLayout> allRoutesLayouts = new ArrayList<LinearLayout>();
-    private ShapeableImageView obstaclesImages[][];
+    private ArrayList<ShapeableImageView> game_character_positions;
+    //private LinearLayout game_LL_obstaclesLayout;
+    private ArrayList<LinearLayout> allRoutesLayouts;
     private GameManager gm;
-    private int summonObstacle = 1;
+    private Vibrator v;
+    private Toast t;
+    //private int summonObstacle = 1;
     private final int NUMBER_OF_POSITIONS = 3;
     //time variables
+    private Timer timer;
     long startTime = 0;
     final int DELAY = 1000;
 
@@ -49,6 +49,9 @@ public class GameScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
         gm = new GameManager();
+        game_life_images = new ArrayList<ShapeableImageView>();
+        game_character_positions = new ArrayList<ShapeableImageView>();
+        allRoutesLayouts = new ArrayList<LinearLayout>();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         findViews();
         game_FAB_left.setOnClickListener(v -> moveLeft());
@@ -87,7 +90,6 @@ public class GameScreenActivity extends AppCompatActivity {
         }
     }
 
-    private Timer timer;
 
     private void startTimer() {
         timer = new Timer();
@@ -98,7 +100,7 @@ public class GameScreenActivity extends AppCompatActivity {
                     updateTimerUI();
                 });
                 createObstacle();
-                summonObstacle++;
+                //summonObstacle++;
             }
         }, DELAY, DELAY);
     }
@@ -114,30 +116,12 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
     private void createObstacle() {
-        int numberOfObstaclesPosition = gm.getNumberOfObstaclesPosition() - 1;
-        //obstacleMovement(o, index, chosenLayout, numberOfObstaclesPosition);
-        while (numberOfObstaclesPosition > 0) {
-            for (LinearLayout l : allRoutesLayouts) {
-                ShapeableImageView imageBelow = (ShapeableImageView) l.getChildAt(numberOfObstaclesPosition);
-                ShapeableImageView imageAbove = (ShapeableImageView) l.getChildAt(numberOfObstaclesPosition - 1);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        imageBelow.setVisibility(imageAbove.getVisibility());
-                        imageAbove.setVisibility(View.INVISIBLE);
-                    }
-                });
-            }
-            if (isCollision()) {
-                setLifeImages();
-                gm.setWrong();
-                String msg = "Ouch! " + String.valueOf(gm.getLifeCount()) + " lives left";
-                toast(msg);
-                gm.vibrate(v);
-            }
-            numberOfObstaclesPosition--;
-        }
+        //gm.getNumberOfObstaclesPosition() - 1 is the index of the last row of obstacles
+        moveObstacles(gm.getNumberOfObstaclesPosition() - 1);
+        initNewObstacle();
+    }
 
+    private void initNewObstacle() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -146,6 +130,33 @@ public class GameScreenActivity extends AppCompatActivity {
                 }
                 int index = getRandomNum(0, NUMBER_OF_POSITIONS);
                 allRoutesLayouts.get(index).getChildAt(0).setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private void moveObstacles(int numberOfObstaclesPosition) {
+        while (numberOfObstaclesPosition > 0) {
+            for (LinearLayout l : allRoutesLayouts)
+                moveSingleRow(numberOfObstaclesPosition, l);
+            if (isCollision()) {
+                gm.setWrong();
+                setLifeImages();
+                gm.vibrate(v);
+                String msg = "Ouch! " + String.valueOf(gm.getLifeCount()) + " lives left";
+                toast(msg);
+            }
+            numberOfObstaclesPosition--;
+        }
+    }
+
+    private void moveSingleRow(int numberOfObstaclesPosition, LinearLayout l) {
+        ShapeableImageView imageBelow = (ShapeableImageView) l.getChildAt(numberOfObstaclesPosition);
+        ShapeableImageView imageAbove = (ShapeableImageView) l.getChildAt(numberOfObstaclesPosition - 1);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                imageBelow.setVisibility(imageAbove.getVisibility());
+                imageAbove.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -164,24 +175,6 @@ public class GameScreenActivity extends AppCompatActivity {
     private int getRandomNum(int from,int to) {
         return from + (int)(Math.random() * (to - from));
     }
-
-//    public void obstacleMovement(Obstacle o, int index, LinearLayout chosenLayout, int numberOfObstaclesPosition) {
-//        for (int i = 0; i < numberOfObstaclesPosition; i++) {
-//            ShapeableImageView obstacleImg = (ShapeableImageView) chosenLayout.getChildAt(o.getPosition());
-//            showObstacle(obstacleImg);
-//            if(gm.isCollision(index, o.getPosition())){
-//                setLifeImages();
-//                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-//                String msg = "Ouch! " + String.valueOf(gm.getLifeCount()) + " lives left";
-//                toast(msg);
-//                gm.vibrate(v);
-//            }
-//            delay();
-//            hideObstacle(obstacleImg);
-//            o.setNextPosition();
-//
-//        }
-//    }
 
     private void toast(String msg) {
         runOnUiThread(new Runnable() {
@@ -251,7 +244,7 @@ public class GameScreenActivity extends AppCompatActivity {
         game_FAB_left = findViewById(R.id.game_FAB_left);
         game_FAB_right  = findViewById(R.id.game_FAB_right);
         game_LL_characterLayout = findViewById(R.id.game_LL_characterLayout);
-        game_LL_obstaclesLayout = findViewById(R.id.game_LL_obstaclesLayout);
+        //game_LL_obstaclesLayout = findViewById(R.id.game_LL_obstaclesLayout);
         game_LL_heartLayout = findViewById(R.id.game_LL_heartLayout);
         getLifeImages();
         setAllRoutes();
