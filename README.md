@@ -1,13 +1,5 @@
 # World Cup 2022 Obstacle Game Android App - Android App ![Build status](https://github.com/wallabag/android-app/workflows/CI/badge.svg?branch=master)
 
-![main_character](https://user-images.githubusercontent.com/60986160/205102375-4051208b-500f-44e9-a966-dc29205d0ae7.png)
-{align="left"
-width="200" hspace="10" vspace="10"}
-
-
-<img src="/readme/wallabag logo.png" align="left"
-width="200" hspace="10" vspace="10">
-
 wallabag is a self-hosted read-it-later app.  
 Unlike other services, wallabag is free and open source.  
 wallabag for Android is a companion app for [wallabag](https://www.wallabag.org). You need a wallabag account first, which you are going to use in this app.
@@ -43,7 +35,11 @@ width="200"
 [<img src="/readme/Wallabag%20Article%20View.png" align="center"
 width="200"
     hspace="10" vspace="10">](/readme/Wallabag%20Article%20View.png)
-
+    ### Characters
+    #### Main Character
+    ![main_character](https://user-images.githubusercontent.com/60986160/205102375-4051208b-500f-44e9-a966-dc29205d0ae7.png)
+    #### Obstacles
+    
 ## Permissions
 
 On Android versions prior to Android 6.0, wallabag requires the following permissions:
