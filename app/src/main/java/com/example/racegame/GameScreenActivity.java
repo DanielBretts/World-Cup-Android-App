@@ -37,12 +37,13 @@ public class GameScreenActivity extends AppCompatActivity {
     private GameManager gm;
     private Vibrator v;
     private Toast t;
+    private boolean isStopped = false;
     //private int summonObstacle = 1;
     private final int NUMBER_OF_POSITIONS = 3;
     //time variables
     private Timer timer;
     long startTime = 0;
-    final int DELAY = 1000;
+    final int DELAY = 800;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +67,14 @@ public class GameScreenActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         v.cancel();
-        if(t != null)
-            t.cancel();
+        isStopped = true;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isStopped = false;
+    }
 
     private void playBackgroundMusic() {
         MediaPlayer ring = MediaPlayer.create(this, R.raw.crowd);
@@ -143,7 +148,8 @@ public class GameScreenActivity extends AppCompatActivity {
                 setLifeImages();
                 gm.vibrate(v);
                 String msg = "Ouch! " + String.valueOf(gm.getLifeCount()) + " lives left";
-                toast(msg);
+                if(!isStopped)
+                    toast(msg);
             }
             numberOfObstaclesPosition--;
         }
