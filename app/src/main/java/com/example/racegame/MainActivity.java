@@ -19,8 +19,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findViews();
         main_BTN_start.setOnClickListener(v -> openGameScreen());
+        playBackgroundMusic();
     }
 
+    private void playBackgroundMusic() {
+        MediaPlayer ring = MediaPlayer.create(this, R.raw.crowd);
+        ring.setLooping(true);
+        ring.start();
+    }
 
     private void openGameScreen() {
         Intent gameIntent = new Intent(this, GameScreenActivity.class);

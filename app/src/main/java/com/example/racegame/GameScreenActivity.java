@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Looper;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -17,12 +15,8 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class GameScreenActivity extends AppCompatActivity {
     private ExtendedFloatingActionButton game_FAB_left;
@@ -32,7 +26,6 @@ public class GameScreenActivity extends AppCompatActivity {
     private ArrayList<ShapeableImageView> game_life_images;
     private LinearLayout game_LL_characterLayout;
     private ArrayList<ShapeableImageView> game_character_positions;
-    //private LinearLayout game_LL_obstaclesLayout;
     private ArrayList<LinearLayout> allRoutesLayouts;
     private GameManager gm;
     private Vibrator v;
@@ -43,7 +36,7 @@ public class GameScreenActivity extends AppCompatActivity {
     //time variables
     private Timer timer;
     long startTime = 0;
-    final int DELAY = 800;
+    final int DELAY = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +119,7 @@ public class GameScreenActivity extends AppCompatActivity {
         initNewObstacle();
     }
 
+    //Resetting the first row and generating new obstacles
     private void initNewObstacle() {
         runOnUiThread(new Runnable() {
             @Override
@@ -139,6 +133,7 @@ public class GameScreenActivity extends AppCompatActivity {
         });
     }
 
+    //obstacle movement and checks if there was a collision
     private void moveObstacles(int numberOfObstaclesPosition) {
         while (numberOfObstaclesPosition > 0) {
             for (LinearLayout l : allRoutesLayouts)
@@ -155,6 +150,7 @@ public class GameScreenActivity extends AppCompatActivity {
         }
     }
 
+    //The obstacle movement logic - every row takes the row above and copies it to itself
     private void moveSingleRow(int numberOfObstaclesPosition, LinearLayout l) {
         ShapeableImageView imageBelow = (ShapeableImageView) l.getChildAt(numberOfObstaclesPosition);
         ShapeableImageView imageAbove = (ShapeableImageView) l.getChildAt(numberOfObstaclesPosition - 1);
@@ -167,6 +163,7 @@ public class GameScreenActivity extends AppCompatActivity {
         });
     }
 
+    //Collision checker - checks if the character was in the same route while an obstacle was in the bottom of the screen
     private boolean isCollision() {
         int playerPosition = gm.getPlayer().getCurrentPosition();
         int bottomPosition = gm.getNumberOfObstaclesPosition()-2;
@@ -182,6 +179,7 @@ public class GameScreenActivity extends AppCompatActivity {
         return from + (int)(Math.random() * (to - from));
     }
 
+    //toast creator
     private void toast(String msg) {
         runOnUiThread(new Runnable() {
             @Override
@@ -192,6 +190,7 @@ public class GameScreenActivity extends AppCompatActivity {
         });
     }
 
+    //set the amount of life (soccer balls) in the top of the screen
     private void setLifeImages() {
         runOnUiThread(new Runnable() {
             @Override
@@ -202,29 +201,9 @@ public class GameScreenActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
-
-    private void hideObstacle(ShapeableImageView obstacleImg) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                obstacleImg.setVisibility(View.INVISIBLE);
-            }
-        });
-    }
-
-    private void showObstacle(ShapeableImageView obstacleImg) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                    obstacleImg.setVisibility(View.VISIBLE);
-            }
-        });
-    }
-
-
+    //Character movement - Left
     private void moveLeft() {
         int playerPosition = gm.getPlayer().getCurrentPosition();
         if(playerPosition > 0){
@@ -235,6 +214,7 @@ public class GameScreenActivity extends AppCompatActivity {
         }
     }
 
+    //Character movement - Right
     private void moveRight() {
         int playerPosition = gm.getPlayer().getCurrentPosition();
         if(playerPosition < NUMBER_OF_POSITIONS-1){
@@ -250,19 +230,19 @@ public class GameScreenActivity extends AppCompatActivity {
         game_FAB_left = findViewById(R.id.game_FAB_left);
         game_FAB_right  = findViewById(R.id.game_FAB_right);
         game_LL_characterLayout = findViewById(R.id.game_LL_characterLayout);
-        //game_LL_obstaclesLayout = findViewById(R.id.game_LL_obstaclesLayout);
         game_LL_heartLayout = findViewById(R.id.game_LL_heartLayout);
         getLifeImages();
-        setAllRoutes();
+        getAllRoutes();
     }
 
-
-    private void setAllRoutes() {
+    //Gets the routes to be accessible in the activity
+    private void getAllRoutes() {
         allRoutesLayouts.add(findViewById(R.id.main_LL_firstLayout));
         allRoutesLayouts.add(findViewById(R.id.main_LL_secondLayout));
         allRoutesLayouts.add(findViewById(R.id.main_LL_thirdLayout));
     }
 
+    //Gets the life images (soccer ball) to be accessible in the activity
     private void getLifeImages() {
         game_life_images.add(findViewById(R.id.main_IMG_heart1));
         game_life_images.add(findViewById(R.id.main_IMG_heart2));

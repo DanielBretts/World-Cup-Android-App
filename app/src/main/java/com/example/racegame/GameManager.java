@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.widget.Toast;
 
 public class GameManager {
@@ -11,9 +12,8 @@ public class GameManager {
     private Character player;
     private final int NUMBER_OF_OBSTACLE_POSITION = 4;
 
-
     public int getLifeCount() {
-        return lifeCount;
+        return this.lifeCount;
     }
 
     public Character getPlayer() {
@@ -24,17 +24,9 @@ public class GameManager {
         this.player = new Character();
     }
 
-    public boolean isCollision(int obstaclePosition, int position) {
-        if(obstaclePosition == player.currentPosition && position == NUMBER_OF_OBSTACLE_POSITION-1){
-            if (lifeCount>0)
-                setWrong();
-            return true;
-        }
-        return false;
-    }
-
     public void setWrong() {
-        this.lifeCount--;
+        if(this.lifeCount > 0)
+            this.lifeCount--;
     }
 
     public int getNumberOfObstaclesPosition() {
