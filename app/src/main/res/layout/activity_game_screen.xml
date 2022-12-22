@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameScreenActivity"
-    android:background="@drawable/grass">
+    android:background="@drawable/grass"
+    android:id="@+id/main_RL_game">
 
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -18,7 +19,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/main_blue"
+        android:backgroundTint="@color/white"
         app:icon="@drawable/ic_baseline_arrow_left_24"
         app:iconSize="100dp" />
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -30,7 +31,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         app:icon="@drawable/ic_baseline_arrow_right_24"
-        android:backgroundTint="@color/main_blue"
+        android:backgroundTint="@color/white"
         />
 
 <LinearLayout
@@ -76,10 +77,10 @@
         android:layout_height="match_parent"/>
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/game_LBL_time"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:text="00:00:00"
+        android:layout_marginTop="20dp"
+        android:text="Score: 0"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"/>
@@ -90,6 +91,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/game_LL_TopLayout">
+
         <LinearLayout
             android:id="@+id/main_LL_firstLayout"
             android:layout_width="0dp"
@@ -98,30 +100,37 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
             <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="80dp"
+                android:layout_width="@dimen/character_width"
                 android:layout_height="80dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
             <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="80dp"
+                android:layout_width="@dimen/character_width"
                 android:layout_height="100dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="80dp"
                 android:layout_height="110dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
             <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="80dp"
+                android:layout_width="@dimen/character_width"
                 android:layout_height="120dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
@@ -136,34 +145,40 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
             <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="80dp"
+                android:layout_width="@dimen/character_width"
                 android:layout_height="80dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
             <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="80dp"
+                android:layout_width="@dimen/character_width"
                 android:layout_height="100dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="80dp"
                 android:layout_height="110dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
             <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="80dp"
+                android:layout_width="@dimen/character_width"
                 android:layout_height="120dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
-
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
 
         </LinearLayout>
         <LinearLayout
@@ -174,38 +189,128 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
             <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="80dp"
+                android:layout_width="@dimen/character_width"
                 android:layout_height="80dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
             <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="80dp"
+                android:layout_width="@dimen/character_width"
                 android:layout_height="100dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="80dp"
                 android:layout_height="110dp"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/main_LL_fourthLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="80dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="80dp"
-                android:layout_height="120dp"
-                android:layout_margin="20dp"
+                android:layout_height="110dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
                 app:srcCompat="@drawable/obstacle"
                 android:visibility="invisible"
                 />
-
-
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
         </LinearLayout>
-
-
+        <LinearLayout
+            android:id="@+id/main_LL_fifthLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="80dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/character_width"
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/margin_between_obstacles"
+                app:srcCompat="@drawable/obstacle"
+                android:visibility="invisible"
+                />
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/game_LL_characterLayout"
@@ -218,28 +323,47 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="80dp"
             android:layout_height="120dp"
-            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
             android:visibility="invisible"
             app:srcCompat="@drawable/main_character" />
-        <View
-            android:layout_width="17dp"
-            android:layout_height="match_parent"/>
+<!--        <View-->
+<!--            android:layout_width="17dp"-->
+<!--            android:layout_height="match_parent"/>-->
 
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="80dp"
             android:layout_height="120dp"
-            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
             app:srcCompat="@drawable/main_character"
-            android:visibility="visible"/>
-        <View
-            android:layout_width="17dp"
-            android:layout_height="match_parent"/>
+            android:visibility="invisible"/>
+<!--        <View-->
+<!--            android:layout_width="17dp"-->
+<!--            android:layout_height="match_parent"/>-->
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="80dp"
             android:layout_height="120dp"
-            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/main_character" />
+
+<!--        <View-->
+<!--            android:layout_width="17dp"-->
+<!--            android:layout_height="match_parent"/>-->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
             android:visibility="invisible"
-            app:srcCompat="@drawable/main_character" />/>
+            app:srcCompat="@drawable/main_character" />
+<!--        <View-->
+<!--            android:layout_width="17dp"-->
+<!--            android:layout_height="match_parent"/>-->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/main_character" />
     </LinearLayout>
 
 

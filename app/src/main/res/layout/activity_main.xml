@@ -10,23 +10,90 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:gravity="center">
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:srcCompat="@drawable/title"
-        android:layout_below="@+id/main_view"
-        android:layout_margin="10dp"/>
+        android:gravity="center"
+        android:orientation="vertical">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/main_view"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            app:srcCompat="@drawable/title" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="150dp"
-        android:layout_height="120dp"
-        android:id="@+id/main_BTN_start"
-        app:srcCompat="@drawable/start"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/main_LBL_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buttons  "
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <Switch
+                android:id="@+id/main_SWTC_moveType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="1.5"
+                android:scaleY="1.5" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/main_LBL_movement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  Movement"
+                android:textSize="20dp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/main_LBL_slow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Slow  "
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <Switch
+                android:id="@+id/main_SWTC_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="1.5"
+                android:scaleY="1.5" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/main_LBL_fast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  Fast"
+                android:textSize="20dp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/main_BTN_start"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/start" />
     </LinearLayout>
 </RelativeLayout>

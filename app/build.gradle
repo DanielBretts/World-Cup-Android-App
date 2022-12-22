@@ -7,6 +7,10 @@ android {
     compileSdk 32
 
     defaultConfig {
+        Properties properties = new Properties()
+
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        manifestPlaceholders = [GOOGLE_MAPS_API: "${properties.getProperty('GOOGLE_MAPS_API')}"]
         applicationId "com.example.racegame"
         minSdk 26
         targetSdk 32
@@ -15,6 +19,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -35,4 +40,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    //GSON
+    implementation 'com.google.code.gson:gson:2.10'
+    //Maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    //Location
+    implementation 'com.github.delight-im:Android-SimpleLocation:v1.1.0'
+    //yoyo
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
 }
